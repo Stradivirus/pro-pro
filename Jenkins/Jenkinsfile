@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'echo "Building..."'
+                // 여기에 빌드 명령어 추가
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'echo "Testing..."'
+                // 여기에 테스트 명령어 추가
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'echo "Deploying..."'
+                // 여기에 배포 명령어 추가
+            }
+        }
+    }
+}
