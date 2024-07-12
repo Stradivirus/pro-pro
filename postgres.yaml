@@ -1,41 +1,9 @@
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: 3ifp
-
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: postgres-pvc
-  namespace: 3ifp
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 5Gi  # 적절한 크기로 조정하세요
-
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: postgres-secrets
-  namespace: 3ifp
-type: Opaque
-data:
-  postgres-user: bW9vbg==  # 'moon'을 base64로 인코딩한 값
-  postgres-password: cGFzc3dvcmQ=  # 'password'를 base64로 인코딩한 값. 실제 사용 시 변경하세요!
-
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: postgres
-  namespace: 3ifp
 spec:
-  replicas: 3 #갯수
+  replicas: 2 #갯수
   selector:
     matchLabels:
       app: postgres
@@ -80,17 +48,3 @@ spec:
       - name: postgres-storage
         persistentVolumeClaim:
           claimName: postgres-pvc
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: postgres
-  namespace: 3ifp
-spec:
-  selector:
-    app: postgres
-  ports:
-    - protocol: TCP
-      port: 5432
-      targetPort: 5432
