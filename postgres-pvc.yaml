@@ -13,7 +13,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: manual
   hostPath:
-    path: "/work/project/Jenkins/volume"
+    path: "/work/project/postgres/volume"
     type: DirectoryOrCreate
 
 ---
