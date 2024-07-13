@@ -4,7 +4,7 @@ metadata:
   name: postgres
   namespace: 3ifp
 spec:
-  replicas: 3 #갯수
+  replicas: 2 #갯수
   selector:
     matchLabels:
       app: postgres
@@ -21,7 +21,7 @@ spec:
           value: moon #여기 db 이름 입력
         - name: POSTGRES_USER
           valueFrom:
-            secretKeyRef: #시크릿으로 보완 유지
+            secretKeyRef: #시크릿으로 보안 유지
               name: postgres-secrets
               key: postgres-user
         - name: POSTGRES_PASSWORD

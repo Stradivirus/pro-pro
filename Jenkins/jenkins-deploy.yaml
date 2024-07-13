@@ -11,7 +11,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: manual
   hostPath:
-    path: "/work/project/Jenkins/volume"
+    path: "/work/project/Jenkins/volume" #여기가 젠킨스가 저장될 경로
   claimRef:
     name: jenkins-pvc
     namespace: jenkins
