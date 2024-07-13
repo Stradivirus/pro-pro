@@ -3,6 +3,9 @@ kind: Application
 metadata:
   name: my-app
   namespace: argocd
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: myapp=docker.io/stradivirus/fast
+    argocd-image-updater.argoproj.io/myapp.update-strategy: semver
 spec:
   project: default
   source:
