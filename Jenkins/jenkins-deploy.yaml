@@ -16,7 +16,7 @@ spec:
       serviceAccountName: jenkins
       containers:
       - name: jenkins
-        image: jenkins/jenkins:lts
+        image: stradivirus/jenkins-with-docker:latest  # 이 부분을 수정했습니다
         ports:
         - containerPort: 8080
         volumeMounts:
