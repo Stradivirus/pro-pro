@@ -22,7 +22,7 @@ pipeline {
         stage('Check for Changes') {
             steps {
                 script {
-                    def fastapiChanged = sh(script: "git diff HEAD^ HEAD --name-only | grep -E '^fastapi/(Dockerfile|main\\.py)\\$'", returnStatus: true) == 0
+                    def fastapiChanged = sh(script: 'git diff HEAD^ HEAD --name-only | grep -E "^fastapi/(Dockerfile|main\\.py)\\$"', returnStatus: true) == 0
                     env.FASTAPI_CHANGED = "${fastapiChanged}"
                     def otherChanged = sh(script: "git diff HEAD^ HEAD --name-only | grep -vE '^fastapi/'", returnStatus: true) == 0
                     env.OTHER_CHANGED = "${otherChanged}"
